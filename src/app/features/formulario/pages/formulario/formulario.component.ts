@@ -3,6 +3,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { GeniusService } from '../../../../core/services/genius.service';
 import { debounceTime, Subject, Subscription, switchMap } from 'rxjs';
 import { Hit, Song } from '../../../../interfaces/Igenius';
+import { SeleccionesService } from '../../../../core/services/selecciones.service';
 
 @Component({
   selector: 'app-formulario',
@@ -13,10 +14,36 @@ import { Hit, Song } from '../../../../interfaces/Igenius';
 })
 export class FormularioComponent {
 
+  categorias = [
+    {
+      id: 0,
+      categoria: 'CANCION DEL AÑO',
+      nombre_back: 'cancion_del_ano',
+    },
+    {
+      id: 1,
+      categoria: 'COLABORACION DEL AÑO',
+      nombre_back: 'colaboracion_del_ano',
+    },
+    {
+      id: 2,
+      categoria: 'PORTADA DEL AÑO',
+      nombre_back: 'portada_del_ano',
+    },
+    {
+      id: 3,
+      categoria: 'BARRA DEL AÑO',
+      nombre_back: 'barra_del_ano',
+    }
+  ]
+
+
   private searchSubject = new Subject<string>();
   private subscription: Subscription | null = null;
   filteredResults: Hit[] = []
-  constructor(private geniusService: GeniusService) {
+  constructor(
+    private geniusService: GeniusService,
+    private seleccionesService: SeleccionesService) {
 
     this.subscription = this.searchSubject.pipe(
       debounceTime(300), // Espera 300 ms después de cada tecla para reducir llamadas
@@ -28,8 +55,6 @@ export class FormularioComponent {
     
   }
 
-
-
   search(ev: Event) {
     const inputValue = (ev.target as HTMLInputElement).value;
     if (inputValue.length <= 0) {
@@ -37,5 +62,10 @@ export class FormularioComponent {
       return;
     }
     this.searchSubject.next(inputValue); // Emite el nuevo valor de búsqueda
+  }
+
+  selectItem(item: Hit) {
+    console.log(item)
+    this.seleccionesService.updateSelecciones({categoria: 'EP DEL AÑO', info: item.result})
   }
 }
