@@ -1,0 +1,64 @@
+.p-accordionheader {
+    background-color: transparent !important;
+    color: var(--color-text);
+    font-size: 70px
+}
+
+::ng-deep.p-accordioncontent-content {
+    background-color: transparent !important
+}
+
+input[type="text"] {
+    z-index: 999;
+    width: 800px;
+    height: 70px;
+    padding: 10px 40px 10px 20px;
+    border: 1px solid #dcdcdc;
+    font-size: 32px;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.selector {
+    position: relative;
+}
+  
+.input-search {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+  
+.autocomplete {
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 250px;
+    overflow-y: auto;
+    color: var(--color-text);
+}
+  
+.autocomplete-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+  
+.autocomplete-item:hover {
+    background-color: #f0f0f0;
+}
+  
+.autocomplete-image {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+  
+.autocomplete-title {
+    font-size: 28px;
+}
+  
