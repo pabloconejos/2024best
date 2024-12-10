@@ -8,6 +8,7 @@ import { TopTresComponent } from "../../components/top-tres/top-tres.component";
 import { ColaboracionComponent } from "../../components/colaboracion/colaboracion.component";
 import { CoverComponent } from "../../components/cover/cover.component";
 import { LyricsComponent } from "../../components/lyrics/lyrics.component";
+import { SongViewerComponent } from "../../components/song-viewer/song-viewer.component";
 
 @Component({
   selector: 'app-formulario',
@@ -21,7 +22,7 @@ export class FormularioComponent {
   categorias = [
     {
       id: 0,
-      categoria: 'TOP 3 CANCIONES 2024',
+      categoria: 'CANCION DEL AÑO',
       nombre_back: 'cancion_del_ano',
     },
     {
