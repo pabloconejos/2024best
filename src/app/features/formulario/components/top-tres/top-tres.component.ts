@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SeleccionesService } from '../../../../core/services/selecciones.service';
 
 @Component({
   selector: 'app-top-tres',
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './top-tres.component.css'
 })
 export class TopTresComponent {
+  constructor (public seleccionesService: SeleccionesService) {
 
+  }
 }

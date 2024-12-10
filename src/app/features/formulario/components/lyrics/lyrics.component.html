@@ -1,1 +1,5 @@
 <p>lyrics works!</p>
+
+@if (seleccionesService.selecciones()['EP DEL AÑO']) {
+    <p>{{seleccionesService.selecciones()['EP DEL AÑO'].info.full_title }}</p>
+}

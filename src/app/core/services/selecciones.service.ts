@@ -15,12 +15,12 @@ export class SeleccionesService {
 
   updateSelecciones(data: Ieleccion) {
     if (!this.selecciones()[data.categoria]) {
-      this.selecciones()[data.categoria] = data.info;
+      this.selecciones()[data.categoria] = {categoria: data.categoria, info: data.info};
       console.log(this.selecciones())
       return
     }
 
-    this.selecciones()[data.categoria] = data.info
+    this.selecciones()[data.categoria].info = data.info
 
     console.log(this.selecciones())
 
