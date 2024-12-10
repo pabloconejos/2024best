@@ -17,6 +17,26 @@
                         </div>
                     }
                 </section>
+
+                <ng-container>
+                    @switch (item.nombre_back) {
+                        @case ('cancion_del_ano') {
+                            <app-top-tres></app-top-tres>
+                        }
+                        @case ('colaboracion_del_ano') {
+                            <app-colaboracion></app-colaboracion>
+                        }
+                        @case ('portada_del_ano') {
+                            <app-cover></app-cover>
+                        }
+                        @case ('barra_del_ano') {
+                            <app-lyrics></app-lyrics>
+                        }
+                        @default {
+                          Default case.
+                        }
+                    }
+                </ng-container>
                   
             </p-accordion-content>
         </p-accordion-panel>

@@ -4,11 +4,15 @@ import { GeniusService } from '../../../../core/services/genius.service';
 import { debounceTime, Subject, Subscription, switchMap } from 'rxjs';
 import { Hit, Song } from '../../../../interfaces/Igenius';
 import { SeleccionesService } from '../../../../core/services/selecciones.service';
+import { TopTresComponent } from "../../components/top-tres/top-tres.component";
+import { ColaboracionComponent } from "../../components/colaboracion/colaboracion.component";
+import { CoverComponent } from "../../components/cover/cover.component";
+import { LyricsComponent } from "../../components/lyrics/lyrics.component";
 
 @Component({
   selector: 'app-formulario',
   standalone: true,
-  imports: [AccordionModule],
+  imports: [AccordionModule, TopTresComponent, ColaboracionComponent, CoverComponent, LyricsComponent],
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css'
 })
@@ -17,7 +21,7 @@ export class FormularioComponent {
   categorias = [
     {
       id: 0,
-      categoria: 'CANCION DEL AÑO',
+      categoria: 'TOP 3 CANCIONES 2024',
       nombre_back: 'cancion_del_ano',
     },
     {
