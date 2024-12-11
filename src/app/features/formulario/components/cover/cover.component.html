@@ -1,4 +1,4 @@
-<section class="info-row-song">
+<section class="info-song-row">
     <app-image-viewer 
             [image]="{
                 url: seleccionesService.selecciones()['portada_del_ano']?.info.url,
@@ -6,4 +6,16 @@
                 emote: '🖼️'
             }">
     </app-image-viewer>
+    @if (seleccionesService.selecciones()['portada_del_ano']) {
+        <ul>
+            <li>
+                <p>By: {{seleccionesService.selecciones()['portada_del_ano'].info.artist}}</p>
+            </li>
+        </ul>
+        
+    }
+
+    @if (!seleccionesService.selecciones()['portada_del_ano']) {
+        <p>⚠️ Si estás buscando la portada de un álbum, es más efectivo poner el nombre de una de las canciones que contiene en lugar del título del álbum.</p>
+    }
 </section>

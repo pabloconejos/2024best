@@ -1,3 +1,12 @@
+header {
+    padding: 18px;
+    h1 {
+        font-size: 70px;
+        text-decoration: underline;
+    }
+    
+}
+
 .p-accordionheader {
     background-color: transparent !important;
     color: var(--color-text);
@@ -10,18 +19,24 @@
 
 
 @media (max-width: 1200px) {
-   
+
 }
 
 @media (max-width: 768px) {
     .p-accordionheader {
         font-size: 60px; /* Tamaño más pequeño para tablets */
     }
+    header h1 {
+        font-size: 60px;
+    }
 }
 
 @media (max-width: 480px) {
     .p-accordionheader {
         font-size: 50px; /* Tamaño más pequeño para móviles */
+    }
+    header h1 {
+        font-size: 50px;
     }
 }
 
