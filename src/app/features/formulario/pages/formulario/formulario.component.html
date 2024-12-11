@@ -1,7 +1,7 @@
 <p-accordion [value]="['0']" [multiple]="false">
     @for (item of categorias; track $index) {
         <p-accordion-panel [value]="item.id">
-            <p-accordion-header (click)="handlerAccordeon($event, item)">{{item.categoria}}</p-accordion-header>
+            <p-accordion-header>{{item.categoria}}</p-accordion-header>
             <p-accordion-content>
 
                 @if (item.nombre_back == 'cancion_del_ano' || item.nombre_back == 'colaboracion_del_ano') {
@@ -28,7 +28,7 @@
                             <app-lyrics></app-lyrics>
                         }
                         @default {
-                          Default case.
+                          
                         }
                     }
                 </ng-container>

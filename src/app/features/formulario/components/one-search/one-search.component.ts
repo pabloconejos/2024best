@@ -30,7 +30,7 @@ export class OneSearchComponent {
 
     this.subscription = this.searchSubject.pipe(
       debounceTime(300), // Espera 300 ms después de cada tecla para reducir llamadas
-      switchMap((query) => this.geniusService.handlerSearch(query, this.item!.nombre_back)) // Cambia a una nueva llamada de búsqueda y cancela la anterior
+      switchMap((query) => this.geniusService.search(query)) // Cambia a una nueva llamada de búsqueda y cancela la anterior
     ).subscribe(response => {
       if (!response) {
         return
@@ -43,7 +43,6 @@ export class OneSearchComponent {
 
   search(ev: Event) {
     this.searchTerm = (ev.target as HTMLInputElement).value;
-    console.log(this.categoriaSelected)
     if (this.searchTerm.length <= 0) {
       this.filteredResults = [];
       return;
@@ -52,7 +51,6 @@ export class OneSearchComponent {
   }
 
   selectItem(categoria: string,item: Hit) {
-    console.log(item)
     this.seleccionesService.updateSelecciones({categoria: categoria, info: item.result})
   }
 }

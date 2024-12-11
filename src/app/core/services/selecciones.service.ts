@@ -14,7 +14,6 @@ export class SeleccionesService {
   constructor() { }
 
   updateSelecciones(data: Ieleccion) {
-    console.log(data)
     if (!this.selecciones()[data.categoria]) {
       this.selecciones()[data.categoria] = {categoria: data.categoria, info: data.info};
       console.log(this.selecciones())

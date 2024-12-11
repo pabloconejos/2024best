@@ -19,18 +19,6 @@ export class GeniusService {
     return this.http.get<Root>(this.apiUrl + '/search', {params}); // Envíalo en el cuerpo
   }
 
-  async handlerSearch(name: string, categoria: string) {
-    let response;
-    switch (categoria) {
-      case 'cancion_del_ano':
-      case 'colaboracion_del_ano':
-        response = await this.search(name).toPromise(); // Convierte el observable a promesa
-        break;
-      
-    }
-    return response
-  }
-
   getCover(data: { artist: string, song: string }) {
     const params = new HttpParams()
       .set('artist', data.artist)

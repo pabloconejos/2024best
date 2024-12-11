@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './two-search.component.html',
-  styleUrl: './two-search.component.css'
+  styleUrls: ['./two-search.component.css', '../one-search/one-search.component.css']
 })
 export class TwoSearchComponent {
   @Input() item: ICategoria | undefined
@@ -37,7 +37,6 @@ export class TwoSearchComponent {
   search() {
     this.isSubmited = true
     if (this.form.valid) {
-      console.log(this.form.value);
       if (this.item?.nombre_back == 'portada_del_ano') {
         this.getCover()
         return
@@ -50,7 +49,6 @@ export class TwoSearchComponent {
       
     } else {
       console.log('Formulario no válido');
-  
     }
   }
 
@@ -75,7 +73,6 @@ export class TwoSearchComponent {
   }
 
   selectItem(categoria: string,item: Hit) {
-    console.log(item)
     this.seleccionesService.updateSelecciones({categoria: categoria, info: item.result})
   }
 }
