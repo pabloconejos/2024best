@@ -6,14 +6,14 @@
                 @for (song of filteredResults; track $index) {
                     <div 
                         (click)="song.result.release_date_components.year === 2024 && selectItem(item.nombre_back, song)" 
-                        [class.disabled]="song.result.release_date_components.year !== 2024 || song.result.featured_artists.length <= 0 && item.nombre_back == 'colaboracion_del_ano'" 
+                        [class.disabled]="song.result.release_date_components.year !== 2024 || !isColab(song) && item.nombre_back == 'colaboracion_del_ano'" 
                         class="autocomplete-item">
                         <img [src]="song.result.song_art_image_url" alt="{{ song.result.title }}" class="autocomplete-image">
                         <span class="autocomplete-title">{{ song.result.full_title }}</span>
     
                         @switch (item.nombre_back) {
                             @case ('colaboracion_del_ano') {
-                                <span class="autocomplete-more-info">{{ song.result.featured_artists.length >= 1 ? 'colab, ' : 'no colab, ' }} </span>
+                                <span class="autocomplete-more-info">{{ !isColab(song) ? 'no colab, ' : 'colab, ' }} </span>
                             } 
                         }
                         <span class="autocomplete-more-info">{{ song.result.release_date_components.year }}</span>

@@ -17,17 +17,24 @@
                 <li>
                     <p>{{seleccionesService.selecciones()['colaboracion_del_ano'].info.release_date_for_display}}</p>
                 </li>
-                <li>
-                    <p>Fts: </p>
-                        <ul style="list-style: circle;">
-                            @for (item of seleccionesService.selecciones()['colaboracion_del_ano'].info.featured_artists; track $index) {
-                                <li style="margin-left: 20px;">{{item.name}}</li>
-                            }
-                        </ul>
-                </li>
+                @if (seleccionesService.selecciones()['colaboracion_del_ano'].info.featured_artists.length >= 1) {
+                    <li>
+                        <p>Fts: </p>
+                            <ul style="list-style: circle;">
+                                @for (item of seleccionesService.selecciones()['colaboracion_del_ano'].info.featured_artists; track $index) {
+                                    <li style="margin-left: 20px;">{{item.name}}</li>
+                                }
+                            </ul>
+                    </li>
+                }
+                
             </ul>
             
         }
+        @if (!seleccionesService.selecciones()['colaboracion_del_ano']) {
+            <p>⛓️ ¿Cuál ha sido la mejor colaboración del año para ti?</p>
+        }
+        
     </div>
 </section>
 

@@ -7,7 +7,7 @@ import { ImageViewerComponent } from "../../../../shared/image-viewer/image-view
   standalone: true,
   imports: [ImageViewerComponent],
   templateUrl: './top-tres.component.html',
-  styleUrl: './top-tres.component.css'
+  styleUrls: ['./top-tres.component.css', '../colaboracion/colaboracion.component.css']
 })
 export class TopTresComponent {
   constructor (public seleccionesService: SeleccionesService) {

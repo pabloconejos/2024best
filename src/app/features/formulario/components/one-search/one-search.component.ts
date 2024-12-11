@@ -35,7 +35,10 @@ export class OneSearchComponent {
       if (!response) {
         return
       }
-      this.filteredResults = response.hits.sort((a,b) => b.result.release_date_components.year - a.result.release_date_components.year)
+      console.log(response)
+
+      this.filteredResults = response.hits.filter(item => item.result.release_date_components)
+      this.filteredResults = this.filteredResults.sort((a,b) => b.result.release_date_components.year - a.result.release_date_components.year)
 
     });
     
@@ -52,5 +55,9 @@ export class OneSearchComponent {
 
   selectItem(categoria: string,item: Hit) {
     this.seleccionesService.updateSelecciones({categoria: categoria, info: item.result})
+  }
+
+  isColab(song: Hit) {
+    return song.result.full_title.includes('&') || song.result.full_title.includes('ft')
   }
 }
