@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SeleccionesService } from '../../../../core/services/selecciones.service';
 
 @Component({
   selector: 'app-colaboracion',
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './colaboracion.component.css'
 })
 export class ColaboracionComponent {
+  constructor (public seleccionesService: SeleccionesService) {
 
+  }
 }

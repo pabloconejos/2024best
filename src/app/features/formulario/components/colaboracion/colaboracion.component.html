@@ -1,1 +1,30 @@
-<p>colaboracion works!</p>
+<section>
+    <div class="info-song-row">
+        <div class="image-frame">
+            @if (seleccionesService.selecciones()['colaboracion_del_ano']) {
+                <img [src]="seleccionesService.selecciones()['colaboracion_del_ano'].info.song_art_image_url" alt="">
+            }
+            <p class="trofeo">🏆</p>
+        </div>
+        @if (seleccionesService.selecciones()['colaboracion_del_ano']) {
+            <ul>
+                <li>
+                    <p>{{seleccionesService.selecciones()['colaboracion_del_ano'].info.full_title}}</p>
+                </li>
+                <li>
+                    <p>{{seleccionesService.selecciones()['colaboracion_del_ano'].info.release_date_for_display}}</p>
+                </li>
+                <li>
+                    <p>Fts: </p>
+                        <ul style="list-style: circle;">
+                            @for (item of seleccionesService.selecciones()['colaboracion_del_ano'].info.featured_artists; track $index) {
+                                <li style="margin-left: 20px;">{{item.name}}</li>
+                            }
+                        </ul>
+                </li>
+            </ul>
+            
+        }
+    </div>
+</section>
+

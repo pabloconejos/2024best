@@ -1,17 +1,29 @@
 <p-accordion [value]="['0']" [multiple]="false">
     @for (item of categorias; track $index) {
         <p-accordion-panel [value]="item.id">
-            <p-accordion-header>{{item.categoria}}</p-accordion-header>
+            <p-accordion-header (click)="onCloseAcordeon($event)">{{item.categoria}}</p-accordion-header>
             <p-accordion-content>
     
                 <section class="selector">
-                    <input (input)="search($event)" class="input-search" type="text" placeholder="Buscar...">
-                    @if (filteredResults.length > 0) {
+                    <input (input)="search($event)" [(ngModel)]="searchTerm" class="input-search" type="text" placeholder="Buscar...">
+                    @if (filteredResults.length > 0 && this.searchTerm.length >= 1) {
                         <div class="autocomplete">
-                            @for (item of filteredResults; track $index) {
-                                <div (click)="selectItem(item)" class="autocomplete-item">
-                                    <img [src]="item.result.song_art_image_url" alt="{{ item.result.title }}" class="autocomplete-image">
-                                    <span class="autocomplete-title">{{ item.result.full_title }}</span>
+                            @for (song of filteredResults; track $index) {
+                                <div 
+                                    (click)="song.result.release_date_components.year === 2024 && selectItem(item.nombre_back, song)" 
+                                    [class.disabled]="song.result.release_date_components.year !== 2024 || song.result.featured_artists.length <= 0 && item.nombre_back == 'colaboracion_del_ano'" 
+                                    class="autocomplete-item">
+                                    <img [src]="song.result.song_art_image_url" alt="{{ song.result.title }}" class="autocomplete-image">
+                                    <span class="autocomplete-title">{{ song.result.full_title }}</span>
+
+                                    @switch (item.nombre_back) {
+                                        @case ('colaboracion_del_ano') {
+                                            <span class="autocomplete-more-info">{{ song.result.featured_artists.length >= 1 ? 'colab, ' : 'no colab, ' }} </span>
+                                        } 
+                                    }
+                                    <span class="autocomplete-more-info">{{ song.result.release_date_components.year }}</span>
+                                    
+                                    
                                 </div>
                             }
                         </div>

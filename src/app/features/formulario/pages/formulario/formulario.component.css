@@ -60,6 +60,20 @@ input[type="text"] {
   
 .autocomplete-title {
     font-size: 28px;
+    flex: 1;
+}
+
+.autocomplete-more-info {
+    font-size: 16px;
+    margin-left: auto;
+}
+
+
+
+.autocomplete-item.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 

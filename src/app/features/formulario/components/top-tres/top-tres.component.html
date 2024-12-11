@@ -1,4 +1,22 @@
-<p>top-tres works!</p>
-@if (seleccionesService.selecciones()['EP DEL AÑO']) {
-    <p>{{seleccionesService.selecciones()['EP DEL AÑO'].info.full_title }}</p>
-}
+<section>
+    <div class="info-song-row">
+        <div class="image-frame">
+            @if (seleccionesService.selecciones()['cancion_del_ano']) {
+                <img [src]="seleccionesService.selecciones()['cancion_del_ano'].info.song_art_image_url" alt="">
+            }
+            <p class="trofeo">🏆</p>
+        </div>
+        @if (seleccionesService.selecciones()['cancion_del_ano']) {
+            <ul>
+                <li>
+                    <p>{{seleccionesService.selecciones()['cancion_del_ano'].info.full_title}}</p>
+                </li>
+                <li>
+                    <p>{{seleccionesService.selecciones()['cancion_del_ano'].info.release_date_for_display}}</p>
+                </li>
+            </ul>
+            
+        }
+    </div>
+</section>
+

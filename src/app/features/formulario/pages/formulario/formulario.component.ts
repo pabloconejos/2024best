@@ -8,17 +8,18 @@ import { TopTresComponent } from "../../components/top-tres/top-tres.component";
 import { ColaboracionComponent } from "../../components/colaboracion/colaboracion.component";
 import { CoverComponent } from "../../components/cover/cover.component";
 import { LyricsComponent } from "../../components/lyrics/lyrics.component";
-import { SongViewerComponent } from "../../components/song-viewer/song-viewer.component";
+import { FormsModule } from '@angular/forms'; // Importa FormsModule
 
 @Component({
   selector: 'app-formulario',
   standalone: true,
-  imports: [AccordionModule, TopTresComponent, ColaboracionComponent, CoverComponent, LyricsComponent],
+  imports: [AccordionModule, TopTresComponent, ColaboracionComponent, CoverComponent, LyricsComponent, FormsModule],
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css'
 })
 export class FormularioComponent {
 
+  
   categorias = [
     {
       id: 0,
@@ -45,7 +46,10 @@ export class FormularioComponent {
 
   private searchSubject = new Subject<string>();
   private subscription: Subscription | null = null;
+
+  searchTerm = ''
   filteredResults: Hit[] = []
+
   constructor(
     private geniusService: GeniusService,
     private seleccionesService: SeleccionesService) {
@@ -55,22 +59,30 @@ export class FormularioComponent {
       switchMap((query) => this.geniusService.search(query)) // Cambia a una nueva llamada de búsqueda y cancela la anterior
     ).subscribe(response => {
       console.log(response.hits)
-      this.filteredResults = response.hits
+      this.filteredResults = response.hits.sort((a,b) => b.result.release_date_components.year - a.result.release_date_components.year)
+
     });
     
   }
 
   search(ev: Event) {
-    const inputValue = (ev.target as HTMLInputElement).value;
-    if (inputValue.length <= 0) {
+    this.searchTerm = (ev.target as HTMLInputElement).value;
+    console.log(this.searchTerm)
+    if (this.searchTerm.length <= 0) {
       this.filteredResults = [];
       return;
     }
-    this.searchSubject.next(inputValue); // Emite el nuevo valor de búsqueda
+    this.searchSubject.next(this.searchTerm); // Emite el nuevo valor de búsqueda
   }
 
-  selectItem(item: Hit) {
+  selectItem(categoria: string,item: Hit) {
     console.log(item)
-    this.seleccionesService.updateSelecciones({categoria: 'EP DEL AÑO', info: item.result})
+    this.seleccionesService.updateSelecciones({categoria: categoria, info: item.result})
   }
+
+  onCloseAcordeon(event: any): void {
+    this.filteredResults = []
+    this.searchTerm = ''
+  }
+  
 }
