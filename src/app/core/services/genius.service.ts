@@ -42,7 +42,7 @@ export class GeniusService {
     const params = new HttpParams()
       .set('artist', data.artist)
       .set('song', data.song);
-    return this.http.get<ILyrics>(this.apiUrl + '/cover', { params });
+    return this.http.get<ILyrics>(this.apiUrl + '/lyrics', { params });
   }
   
 }

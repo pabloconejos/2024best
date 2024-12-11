@@ -38,7 +38,16 @@ export class TwoSearchComponent {
     this.isSubmited = true
     if (this.form.valid) {
       console.log(this.form.value);
-      this.getCover()
+      if (this.item?.nombre_back == 'portada_del_ano') {
+        this.getCover()
+        return
+      }
+
+      if (this.item?.nombre_back == 'barra_del_ano') {
+        this.getLyrics()
+        return
+      }
+      
     } else {
       console.log('Formulario no válido');
   
@@ -47,6 +56,16 @@ export class TwoSearchComponent {
 
   getCover() {
     this.geniusService.getCover(this.form.value).subscribe( cover => {
+      if (!cover || !this.item) {
+        return
+      }
+
+      this.seleccionesService.updateSelecciones({categoria: this.item.nombre_back, info: cover})
+    })
+  }
+
+  getLyrics() {
+    this.geniusService.getLyrics(this.form.value).subscribe( cover => {
       if (!cover || !this.item) {
         return
       }

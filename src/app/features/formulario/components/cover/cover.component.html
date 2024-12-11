@@ -1,1 +1,9 @@
-<p>cover works!</p>
+<section class="info-row-song">
+    <app-image-viewer 
+            [image]="{
+                url: seleccionesService.selecciones()['portada_del_ano']?.info.url,
+                name: seleccionesService.selecciones()['portada_del_ano']?.info.title,
+                emote: '🖼️'
+            }">
+    </app-image-viewer>
+</section>
