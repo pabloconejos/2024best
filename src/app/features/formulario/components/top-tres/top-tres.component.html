@@ -1,11 +1,12 @@
 <section>
     <div class="info-song-row">
-        <div class="image-frame">
-            @if (seleccionesService.selecciones()['cancion_del_ano']) {
-                <img [src]="seleccionesService.selecciones()['cancion_del_ano'].info.song_art_image_url" alt="">
-            }
-            <p class="trofeo">🏆</p>
-        </div>
+        <app-image-viewer 
+            [image]="{
+                url: seleccionesService.selecciones()['cancion_del_ano']?.info.song_art_image_url,
+                name: seleccionesService.selecciones()['cancion_del_ano']?.info.full_title,
+                emote: '🏆'
+            }">
+        </app-image-viewer>
         @if (seleccionesService.selecciones()['cancion_del_ano']) {
             <ul>
                 <li>

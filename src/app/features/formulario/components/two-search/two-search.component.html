@@ -1,0 +1,23 @@
+@if (item) {
+    <section>
+        <form class="form-section" action="" [formGroup]="form" (ngSubmit)="search()">
+            <section class="selector">
+                <input formControlName="artist" class="input-search" type="text" placeholder="Artista...">
+                @if (form.get('artist')!.invalid && isSubmited) {
+                    <div class="alert">El nombre del artista es obligatorio.</div>
+                }
+                
+            </section>
+        
+            <section class="selector">
+                <input formControlName="song" class="input-search" type="text" placeholder="Cancion...">
+                @if (form.get('song')!.invalid && isSubmited) {
+                    <div class="alert">El nombre de la cancion es obligatorio.</div>
+                }
+            </section>
+            <button type="submit">Buscar</button>
+        </form>
+        
+    </section>
+    
+}

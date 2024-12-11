@@ -1,34 +1,17 @@
 <p-accordion [value]="['0']" [multiple]="false">
     @for (item of categorias; track $index) {
         <p-accordion-panel [value]="item.id">
-            <p-accordion-header (click)="onCloseAcordeon($event)">{{item.categoria}}</p-accordion-header>
+            <p-accordion-header (click)="handlerAccordeon($event, item)">{{item.categoria}}</p-accordion-header>
             <p-accordion-content>
-    
-                <section class="selector">
-                    <input (input)="search($event)" [(ngModel)]="searchTerm" class="input-search" type="text" placeholder="Buscar...">
-                    @if (filteredResults.length > 0 && this.searchTerm.length >= 1) {
-                        <div class="autocomplete">
-                            @for (song of filteredResults; track $index) {
-                                <div 
-                                    (click)="song.result.release_date_components.year === 2024 && selectItem(item.nombre_back, song)" 
-                                    [class.disabled]="song.result.release_date_components.year !== 2024 || song.result.featured_artists.length <= 0 && item.nombre_back == 'colaboracion_del_ano'" 
-                                    class="autocomplete-item">
-                                    <img [src]="song.result.song_art_image_url" alt="{{ song.result.title }}" class="autocomplete-image">
-                                    <span class="autocomplete-title">{{ song.result.full_title }}</span>
 
-                                    @switch (item.nombre_back) {
-                                        @case ('colaboracion_del_ano') {
-                                            <span class="autocomplete-more-info">{{ song.result.featured_artists.length >= 1 ? 'colab, ' : 'no colab, ' }} </span>
-                                        } 
-                                    }
-                                    <span class="autocomplete-more-info">{{ song.result.release_date_components.year }}</span>
-                                    
-                                    
-                                </div>
-                            }
-                        </div>
-                    }
-                </section>
+                @if (item.nombre_back == 'cancion_del_ano' || item.nombre_back == 'colaboracion_del_ano') {
+                    <app-one-search [item]="item"></app-one-search>
+                }
+
+                @if (item.nombre_back == 'portada_del_ano' || item.nombre_back == 'barra_del_ano') {
+                    <app-two-search [item]="item"></app-two-search>
+                }
+                
 
                 <ng-container>
                     @switch (item.nombre_back) {
