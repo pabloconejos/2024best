@@ -11,6 +11,7 @@ import { HeaderComponent } from "../../../../shared/header/header.component";
 import { AlbumComponent } from "../../components/album/album.component";
 import { SeleccionesService } from '../../../../core/services/selecciones.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -67,7 +68,9 @@ export class FormularioComponent {
     }
   ]
 
-  constructor(private seleccionesService: SeleccionesService) {
+  constructor(
+    private seleccionesService: SeleccionesService,
+    private router: Router) {
 
   }
 
@@ -79,11 +82,7 @@ export class FormularioComponent {
       return
     }
 
-    if (this.seleccionesService.selecciones.length < this.categorias.length) {
-      this.errorMessage.isError = true
-      this.closeAlert()
-      return
-    }
+    // comprobar objeto
 
     this.generateLink()
   }
@@ -99,7 +98,36 @@ export class FormularioComponent {
 
 
   generateLink() {
-
+    // Obtener las selecciones una vez y reutilizar
+    const selecciones = this.seleccionesService.selecciones();
+  
+    // Crear un array para almacenar las partes del enlace
+    const dataLink = [];
+    const baseLink = 'http://localhost:4200/resultado?';
+  
+    // Iterar sobre las propiedades del objeto selecciones
+    for (const key in selecciones) {
+      if (selecciones.hasOwnProperty(key)) {
+        const seleccion = selecciones[key];
+        const categoria = seleccion.categoria;
+  
+        // Si tiene un ID único
+        if (seleccion.info.id) {
+          dataLink.push(`${categoria}=${seleccion.info.id}`);
+        } else {
+          // Si tiene múltiples datos, unirlos en un string separado por comas
+          const ids = Object.values(seleccion.info).join(',');
+          dataLink.push(`${categoria}=${ids}`);
+        }
+      }
+    }
+  
+    // Unir todas las partes del enlace con '&'
+    const realLink = baseLink + dataLink.join('&');
+    console.log(realLink);
+  
+    // Redirigir al enlace generado
+    window.location.href = realLink;
   }
 
 
