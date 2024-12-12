@@ -1,11 +1,4 @@
-header {
-    padding: 18px;
-    h1 {
-        font-size: 70px;
-        text-decoration: underline;
-    }
-    
-}
+
 
 .p-accordionheader {
     background-color: transparent !important;

@@ -37,7 +37,7 @@ export class TwoSearchComponent {
   search() {
     this.isSubmited = true
     if (this.form.valid) {
-      if (this.item?.nombre_back == 'portada_del_ano') {
+      if (this.item?.nombre_back == 'portada_del_ano' || this.item?.nombre_back == 'album_del_ano') {
         this.getCover()
         return
       }

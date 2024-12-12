@@ -1,5 +1,9 @@
-<p>lyrics works!</p>
-
 @if (seleccionesService.selecciones()['barra_del_ano']) {
-    <p>{{seleccionesService.selecciones()['barra_del_ano'].info.lyrics }}</p>
+    <div class="lyrics-section">
+        <app-text-selector
+            [text]="seleccionesService.selecciones()['barra_del_ano'].info.lyrics"
+            (selectionChange)="onTextSelected($event)"
+        ></app-text-selector>
+    </div>
+    
 }

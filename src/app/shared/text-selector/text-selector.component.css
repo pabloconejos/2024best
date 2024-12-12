@@ -1,0 +1,35 @@
+/* text-selection.component.css */
+.text-container {
+    padding: 10px;
+    cursor: text;
+    user-select: text;
+    border-radius: 5px;
+    color: black;
+
+}
+
+pre {
+    white-space: pre-wrap; /* Respeta los saltos de línea existentes */
+    word-wrap: break-word; /* Fuerza el salto de línea para palabras largas */
+    overflow-wrap: break-word; /* Compatibilidad adicional para palabras largas */
+    max-width: 100%; /* Asegura que el contenedor no se expanda más del tamaño permitido */
+    overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 768px) {
+    pre {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    pre {
+        font-size: 12px;
+    }
+}
+
+  

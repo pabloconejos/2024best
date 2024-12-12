@@ -7,11 +7,13 @@ import { LyricsComponent } from "../../components/lyrics/lyrics.component";
 import { FormsModule } from '@angular/forms';
 import { OneSearchComponent } from "../../components/one-search/one-search.component"; // Importa FormsModule
 import { TwoSearchComponent } from "../../components/two-search/two-search.component";
+import { HeaderComponent } from "../../../../shared/header/header.component";
+import { AlbumComponent } from "../../components/album/album.component";
 
 @Component({
   selector: 'app-formulario',
   standalone: true,
-  imports: [AccordionModule, TopTresComponent, ColaboracionComponent, CoverComponent, LyricsComponent, FormsModule, OneSearchComponent, TwoSearchComponent],
+  imports: [AccordionModule, TopTresComponent, ColaboracionComponent, CoverComponent, LyricsComponent, FormsModule, OneSearchComponent, TwoSearchComponent, HeaderComponent, AlbumComponent],
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css'
 })
@@ -30,11 +32,16 @@ export class FormularioComponent {
     },
     {
       id: 2,
+      categoria: 'ALBUM DEL AÑO',
+      nombre_back: 'album_del_ano',
+    },
+    {
+      id: 3,
       categoria: 'PORTADA DEL AÑO',
       nombre_back: 'portada_del_ano',
     },
     {
-      id: 3,
+      id: 4,
       categoria: 'BARRA DEL AÑO',
       nombre_back: 'barra_del_ano',
     }

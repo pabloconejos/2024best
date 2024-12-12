@@ -1,0 +1,19 @@
+.info-song-row {
+    display: flex;
+    gap: 32px;
+    margin-top: 20px;
+}
+
+@media (max-width: 1200px) {
+    p {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+   
+}
+
+@media (max-width: 480px) {
+    
+}

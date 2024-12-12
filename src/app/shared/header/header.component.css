@@ -1,0 +1,17 @@
+header {
+    border-bottom: 1px black solid;
+    position: relative;
+    overflow: hidden
+}
+
+.content {
+    padding: 18px;
+    color: #fff;
+}
+
+img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1
+}

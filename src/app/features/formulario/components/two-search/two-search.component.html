@@ -10,7 +10,7 @@
             </section>
         
             <section class="selector">
-                <input formControlName="song" class="input-search" type="text" placeholder="Cancion...">
+                <input formControlName="song" class="input-search" type="text" placeholder="Cancion/Album...">
                 @if (form.get('song')!.invalid && isSubmited) {
                     <div class="alert">El nombre de la cancion es obligatorio.</div>
                 }

@@ -1,0 +1,21 @@
+<section class="info-song-row">
+    <app-image-viewer 
+            [image]="{
+                url: seleccionesService.selecciones()['album_del_ano']?.info.url,
+                name: seleccionesService.selecciones()['album_del_ano']?.info.title,
+                emote: '🎧'
+            }">
+    </app-image-viewer>
+    @if (seleccionesService.selecciones()['album_del_ano']) {
+        <ul>
+            <li>
+                <p>By: {{seleccionesService.selecciones()['album_del_ano'].info.artist}}</p>
+            </li>
+        </ul>
+        
+    }
+
+    @if (!seleccionesService.selecciones()['album_del_ano']) {
+        <p>⚠️ Para encontrar un álbum, es más efectivo poner el nombre de una de las canciones que contiene en lugar del título del álbum.</p>
+    }
+</section>

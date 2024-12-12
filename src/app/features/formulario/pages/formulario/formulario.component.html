@@ -1,7 +1,6 @@
 <main>
-    <header>
-        <h1>TUS FAVORITAS 2024</h1>
-    </header>
+
+    <app-header></app-header>
     
     <p-accordion [value]="['0']" [multiple]="false">
         @for (item of categorias; track $index) {
@@ -13,7 +12,7 @@
                         <app-one-search [item]="item"></app-one-search>
                     }
     
-                    @if (item.nombre_back == 'portada_del_ano' || item.nombre_back == 'barra_del_ano') {
+                    @if (item.nombre_back == 'portada_del_ano' || item.nombre_back == 'barra_del_ano' || item.nombre_back == 'album_del_ano') {
                         <app-two-search [item]="item"></app-two-search>
                     }
                     
@@ -25,6 +24,9 @@
                             }
                             @case ('colaboracion_del_ano') {
                                 <app-colaboracion></app-colaboracion>
+                            }
+                            @case ('album_del_ano') {
+                                <app-album></app-album>
                             }
                             @case ('portada_del_ano') {
                                 <app-cover></app-cover>
