@@ -1,0 +1,33 @@
+.lyrics-section {
+    position: relative;
+}
+
+.seleccion {
+    position: absolute;
+    top: 20px; /* Fija el elemento a 20px desde la parte superior de la pantalla */
+    background-color: var(--color-primary);
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+@media (max-width: 1200px) {
+    .seleccion {
+        position: sticky;
+    }
+}
+
+@media (max-width: 768px) {
+    .seleccion {
+        position: sticky;
+    }
+}
+
+@media (max-width: 480px) {
+    .seleccion {
+        position: sticky;
+    }
+}

@@ -15,7 +15,8 @@ export class LyricsComponent {
   }
 
   onTextSelected(selectedText: string): void {
-    console.log('Texto seleccionado:', selectedText);
+    const newInfo = {...{selectedText}, ...this.seleccionesService.selecciones()['barra_del_ano'].info}
+    this.seleccionesService.updateSelecciones({categoria: 'barra_del_ano', info: newInfo})
   }
   
 }

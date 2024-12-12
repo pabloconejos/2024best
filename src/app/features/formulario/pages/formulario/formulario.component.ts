@@ -9,15 +9,35 @@ import { OneSearchComponent } from "../../components/one-search/one-search.compo
 import { TwoSearchComponent } from "../../components/two-search/two-search.component";
 import { HeaderComponent } from "../../../../shared/header/header.component";
 import { AlbumComponent } from "../../components/album/album.component";
+import { SeleccionesService } from '../../../../core/services/selecciones.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-formulario',
   standalone: true,
-  imports: [AccordionModule, TopTresComponent, ColaboracionComponent, CoverComponent, LyricsComponent, FormsModule, OneSearchComponent, TwoSearchComponent, HeaderComponent, AlbumComponent],
+  imports: [
+    AccordionModule,
+    TopTresComponent,
+    ColaboracionComponent,
+    CoverComponent,
+    LyricsComponent,
+    FormsModule,
+    OneSearchComponent,
+    TwoSearchComponent,
+    HeaderComponent,
+    AlbumComponent,
+    CommonModule
+  ],
   templateUrl: './formulario.component.html',
-  styleUrl: './formulario.component.css'
+  styleUrls: ['./formulario.component.css', '../../components/one-search/one-search.component.css']
 })
 export class FormularioComponent {
+
+  nombre: string = '';
+  errorMessage: { isError: boolean; message: string; } = {
+    isError: false,
+    message: 'Faltan campos por completar'
+  }
 
   categorias = [
     {
@@ -47,10 +67,40 @@ export class FormularioComponent {
     }
   ]
 
-  constructor() {
+  constructor(private seleccionesService: SeleccionesService) {
 
   }
 
+
+  generarResultado() {
+    if (this.nombre.length <= 0) {
+      this.errorMessage.isError = true
+      this.closeAlert()
+      return
+    }
+
+    if (this.seleccionesService.selecciones.length < this.categorias.length) {
+      this.errorMessage.isError = true
+      this.closeAlert()
+      return
+    }
+
+    this.generateLink()
+  }
+
+
+
+
+  closeAlert() {
+    setTimeout(() => {
+      this.errorMessage.isError = false
+    }, 3000)
+  }
+
+
+  generateLink() {
+
+  }
 
 
 

@@ -4,6 +4,11 @@
             [text]="seleccionesService.selecciones()['barra_del_ano'].info.lyrics"
             (selectionChange)="onTextSelected($event)"
         ></app-text-selector>
+        @if (seleccionesService.selecciones()['barra_del_ano'].info.selectedText) {
+            <div class="seleccion">
+                <p>Seleccion:</p>
+                <p>{{seleccionesService.selecciones()['barra_del_ano'].info.selectedText}}</p>
+            </div>
+        }
     </div>
-    
 }

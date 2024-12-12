@@ -1,7 +1,5 @@
+<app-header></app-header>
 <main>
-
-    <app-header></app-header>
-    
     <p-accordion [value]="['0']" [multiple]="false">
         @for (item of categorias; track $index) {
             <p-accordion-panel [value]="item.id">
@@ -44,4 +42,19 @@
             </p-accordion-panel>
         }
     </p-accordion>
+
+    <div class="name-section">
+        <label for="name">La favoritas de:</label>
+        <div class="result">
+            <input id="name" class="input-search" [(ngModel)]="nombre" type="text" placeholder="Tu nombre...">
+            <button (click)="generarResultado()">Resultado</button>
+        </div>
+    </div> 
+
+
+    <div id="alert" class="alert" [ngClass]="errorMessage.isError ? '' : 'hidden'">
+        <p>⚠️</p>
+        <p>{{errorMessage.message}}</p>
+    </div>
+    
 </main>
