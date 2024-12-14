@@ -61,11 +61,11 @@ export class FormularioComponent {
       categoria: 'PORTADA DEL AÑO',
       nombre_back: 'portada_del_ano',
     },
-    {
-      id: 4,
-      categoria: 'BARRA DEL AÑO',
-      nombre_back: 'barra_del_ano',
-    }
+    // {
+    //   id: 4,
+    //   categoria: 'BARRA DEL AÑO',
+    //   nombre_back: 'barra_del_ano',
+    // }
   ]
 
   constructor(
@@ -103,7 +103,7 @@ export class FormularioComponent {
   
     // Crear un array para almacenar las partes del enlace
     const dataLink = [];
-    const baseLink = 'http://localhost:4200/resultado?';
+    const baseLink = `http://localhost:4200/resultado?name=${this.nombre}&`;
   
     // Iterar sobre las propiedades del objeto selecciones
     for (const key in selecciones) {
@@ -121,6 +121,8 @@ export class FormularioComponent {
         }
       }
     }
+
+    
   
     // Unir todas las partes del enlace con '&'
     const realLink = baseLink + dataLink.join('&');

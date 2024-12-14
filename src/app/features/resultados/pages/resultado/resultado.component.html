@@ -1,1 +1,50 @@
-<p>resultado works!</p>
+<app-header [title]="'Las favoritas de '+name"></app-header>
+@if (selecciones.length >= 4) {
+    <section class="resultado-section">
+        @for (item of selecciones; track $index) {
+            <div class="grid-item">
+                @if (item.categoria === 'cancion_del_ano' || item.categoria  === 'colaboracion_del_ano') {
+                    <p class="title">{{item.categoria == 'cancion_del_ano' ? 'CANCIÓN DEL AÑO' : 'COLABORACIÓN DEL AÑO'}}</p>
+                    <app-image-viewer 
+                        [image]="{
+                            url: item.data.header_image_url,
+                            name: item.data.full_title,
+                            emote: item.categoria == 'cancion_del_ano' ? '🏆' : '🫂'
+                        }">
+                    </app-image-viewer>
+                    <p>{{item.data.full_title}}</p>
+                    <iframe
+                        allow="autoplay *; encrypted-media *;"
+                        frameborder="0"
+                        height=""
+                        style="width:100%;max-width:660px;overflow:hidden"
+                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+                        [src]="sanitazerUrl(item.data.apple_music_player_url)"
+                    ></iframe>
+
+                }
+                @if (item.categoria  === 'album_del_ano' || item.categoria  === 'portada_del_ano') {
+                    <p class="title">{{item.categoria == 'album_del_ano' ? 'ALBUM DEL AÑO' : 'PORTADA DEL AÑO'}}</p>
+                    <app-image-viewer 
+                        [image]="{
+                            url: item.data[2],
+                            name: item.data[1],
+                            emote: item.categoria == 'album_del_ano' ? '🎧' : '🖼️'
+                        }">
+                    </app-image-viewer>
+                    <div class="info">
+                        <p>{{item.data[1]}}</p>
+                        <p class="sub">by {{item.data[0]}}</p>
+                    </div>
+                    
+                }
+            </div>
+        }
+    </section>
+    <app-shared-link [link]="'https://miaplicacion.com/compartir?codigo=12345'"></app-shared-link>
+
+} @else {
+    <div class="loader">
+        <h1>LOADING...</h1>
+    </div>
+}

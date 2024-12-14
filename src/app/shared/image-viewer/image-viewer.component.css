@@ -7,7 +7,7 @@
     align-items: center;
     background-color: #f8f8f8; /* Color de fondo por defecto */
     cursor: pointer; /* Indica que es interactivo */
-    //overflow: hidden; /* Evita que las imágenes sobresalgan del contenedor */
+    /* overflow: hidden; Evita que las imágenes sobresalgan del contenedor */
     position: relative;
 }
   
@@ -22,6 +22,6 @@
     position: absolute;
     bottom: -30px;
     right: -30px;
-    z-index: 99;
+    z-index: 1;
     transform: rotate(22deg); /* Rotates the image by 45 degrees */
 }

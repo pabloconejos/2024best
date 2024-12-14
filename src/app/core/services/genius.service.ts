@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Root } from '../../interfaces/Igenius';
 import { ICover, ILyrics } from '../../interfaces/IReduceSong';
+import { RootSong } from '../../interfaces/IOneSong';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,13 @@ export class GeniusService {
       .set('artist', data.artist)
       .set('song', data.song);
     return this.http.get<ILyrics>(this.apiUrl + '/lyrics', { params });
+  }
+
+
+  getSong(song: string) {
+    const params = new HttpParams()
+      .set('song', song);
+    return this.http.get<RootSong>(this.apiUrl + '/song', { params });
   }
   
 }
