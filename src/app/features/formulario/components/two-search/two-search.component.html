@@ -15,7 +15,11 @@
                     <div class="alert">El nombre de la cancion es obligatorio.</div>
                 }
             </section>
-            <button type="submit">Buscar</button>
+            @if (!isLoading) {
+                <button type="submit">Buscar</button>
+            } @else {
+                <button type="submit"><app-loader></app-loader></button>
+            }
         </form>
         
     </section>

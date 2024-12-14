@@ -12,6 +12,7 @@ import { AlbumComponent } from "../../components/album/album.component";
 import { SeleccionesService } from '../../../../core/services/selecciones.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { LoaderComponent } from "../../../../shared/loader/loader.component";
 
 @Component({
   selector: 'app-formulario',
@@ -27,8 +28,9 @@ import { Router } from '@angular/router';
     TwoSearchComponent,
     HeaderComponent,
     AlbumComponent,
-    CommonModule
-  ],
+    CommonModule,
+    LoaderComponent
+],
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css', '../../components/one-search/one-search.component.css']
 })

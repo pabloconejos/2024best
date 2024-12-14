@@ -8,6 +8,8 @@ button {
     padding: 10px;
     cursor: pointer;
     max-height: 70px;
+    display: flex;
+    justify-content: center;
 }
 
 .alert {

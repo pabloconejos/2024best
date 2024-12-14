@@ -1,0 +1,9 @@
+.info-section {
+    padding: 85px;
+    min-height: 600px;
+}
+
+.info-section p {
+    font-size: 32px;
+    margin: 0;
+}

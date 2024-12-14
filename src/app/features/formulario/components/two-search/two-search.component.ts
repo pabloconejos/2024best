@@ -5,11 +5,12 @@ import { GeniusService } from '../../../../core/services/genius.service';
 import { SeleccionesService } from '../../../../core/services/selecciones.service';
 import { Hit } from '../../../../interfaces/Igenius';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { LoaderComponent } from "../../../../shared/loader/loader.component";
 
 @Component({
   selector: 'app-two-search',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, LoaderComponent],
   templateUrl: './two-search.component.html',
   styleUrls: ['./two-search.component.css', '../one-search/one-search.component.css']
 })
@@ -21,6 +22,7 @@ export class TwoSearchComponent {
   categoriaSelected!: string;
   form: FormGroup;
   isSubmited: boolean = false
+  isLoading: boolean = false;
 
   constructor(
     private geniusService: GeniusService,
@@ -34,43 +36,47 @@ export class TwoSearchComponent {
     
   }
 
-  search() {
-    this.isSubmited = true
-    if (this.form.valid) {
-      if (this.item?.nombre_back == 'portada_del_ano' || this.item?.nombre_back == 'album_del_ano') {
-        this.getCover()
-        return
-      }
-
-      if (this.item?.nombre_back == 'barra_del_ano') {
-        this.getLyrics()
-        return
-      }
-      
-    } else {
+  async search() {
+    if (!this.form.valid) {
       console.log('Formulario no válido');
+      return;
+    }
+  
+    this.isLoading = true;
+  
+    const category = this.item?.nombre_back;
+    if (category) {
+      try {
+        const info = await this.getInfoByCategory(category);
+        if (info && this.item) {
+          this.seleccionesService.updateSelecciones({ categoria: category, info });
+        }
+      } catch (error) {
+        console.error('Error al obtener la información:', error);
+      } finally {
+        this.isLoading = false;
+      }
     }
   }
-
-  getCover() {
-    this.geniusService.getCover(this.form.value).subscribe( cover => {
-      if (!cover || !this.item) {
-        return
-      }
-
-      this.seleccionesService.updateSelecciones({categoria: this.item.nombre_back, info: cover})
-    })
+  
+  private async getInfoByCategory(category: string) {
+    if (category === 'portada_del_ano' || category === 'album_del_ano') {
+      return this.getCover();
+    }
+    if (category === 'barra_del_ano') {
+      return this.getLyrics();
+    }
+    return null;
   }
-
-  getLyrics() {
-    this.geniusService.getLyrics(this.form.value).subscribe( cover => {
-      if (!cover || !this.item) {
-        return
-      }
-
-      this.seleccionesService.updateSelecciones({categoria: this.item.nombre_back, info: cover})
-    })
+  
+  private getCover() {
+    return this.geniusService.getCover(this.form.value).toPromise();
   }
+  
+  private getLyrics() {
+    return this.geniusService.getLyrics(this.form.value).toPromise();
+  }
+  
 
   selectItem(categoria: string,item: Hit) {
     this.seleccionesService.updateSelecciones({categoria: categoria, info: item.result})
