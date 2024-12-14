@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GeniusService } from '../../../../core/services/genius.service';
 import { ImageViewerComponent } from "../../../../shared/image-viewer/image-viewer.component";
 import { HeaderComponent } from "../../../../shared/header/header.component";
@@ -24,13 +24,18 @@ export class ResultadoComponent {
   //selecciones: Record<string, any> = [];
   selecciones: Idata[] = []
   name: string = ''
+  currentUrl: string = '';
+
   constructor(
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
     private geniusService: GeniusService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.currentUrl = this.router.url
+
     this.route.queryParams.subscribe(params => {
       this.cancionDelAno = params['cancion_del_ano'];
       this.getInfo(params)
@@ -52,8 +57,6 @@ export class ResultadoComponent {
         this.name = data
       }
     }
-
-    console.log(this.selecciones);
   }
   
   async getSong(songId: string) {
@@ -69,7 +72,6 @@ export class ResultadoComponent {
   }
 
   updateSelecciones(data: Idata) {
-    console.log(data)
     this.selecciones.push(data)
   }
 
