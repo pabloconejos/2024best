@@ -1,6 +1,12 @@
 @if (item) {
     <section class="selector">
-        <input (input)="search($event)" [(ngModel)]="searchTerm" class="input-search" type="text" placeholder="Buscar...">
+        <div class="input-section">
+            <input (input)="search($event)" [(ngModel)]="searchTerm" class="input-search" type="text" placeholder="Buscar...">
+            <span class="close-btn">
+                <img (click)="closeAutocomplete()" src="assets/icons/close.svg" alt="">
+            </span>
+        </div>
+        
         @if (filteredResults.length > 0 && this.searchTerm.length >= 1) {
             <div class="autocomplete">
                 @for (song of filteredResults; track $index) {

@@ -88,6 +88,11 @@ q {
   quotes: none; /* Elimina comillas predeterminadas */
 }
 
+button {
+  background-color: gray;
+  border-radius: 2px;
+}
+
   
 body {
   background-color: var(--color-primary);

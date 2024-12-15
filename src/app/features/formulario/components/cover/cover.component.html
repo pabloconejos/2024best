@@ -9,7 +9,8 @@
     @if (seleccionesService.selecciones()['portada_del_ano']) {
         <ul>
             <li>
-                <p>By: {{seleccionesService.selecciones()['portada_del_ano'].info.artist}}</p>
+                <p>{{seleccionesService.selecciones()['portada_del_ano'].info.title}}</p>
+                <p>By {{seleccionesService.selecciones()['portada_del_ano'].info.artist}}</p>
             </li>
         </ul>
         

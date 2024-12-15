@@ -6,16 +6,18 @@
                 emote: '🎧'
             }">
     </app-image-viewer>
+
     @if (seleccionesService.selecciones()['album_del_ano']) {
         <ul>
             <li>
-                <p>By: {{seleccionesService.selecciones()['album_del_ano'].info.artist}}</p>
+                <p>{{seleccionesService.selecciones()['album_del_ano'].info.title}}</p>
+                <p>By {{seleccionesService.selecciones()['album_del_ano'].info.artist}}</p>
             </li>
         </ul>
         
     }
 
     @if (!seleccionesService.selecciones()['album_del_ano']) {
-        <p>⚠️ Para encontrar un álbum, es más efectivo poner el nombre de una de las canciones que contiene en lugar del título del álbum.</p>
+        <p>⚠️ Si estás buscando la portada de un álbum, es más efectivo poner el nombre de una de las canciones que contiene en lugar del título del álbum.</p>
     }
 </section>

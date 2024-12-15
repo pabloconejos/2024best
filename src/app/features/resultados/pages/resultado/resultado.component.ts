@@ -37,7 +37,6 @@ export class ResultadoComponent {
     this.currentUrl = this.router.url
 
     this.route.queryParams.subscribe(params => {
-      this.cancionDelAno = params['cancion_del_ano'];
       this.getInfo(params)
     });
   }

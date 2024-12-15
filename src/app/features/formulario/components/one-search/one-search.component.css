@@ -66,6 +66,26 @@ input[type="text"] {
     cursor: not-allowed;
 }
 
+.input-section {
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    right: 0;
+    top: 30%;
+    margin-right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all ease 0.1s;
+}
+
+.close-btn:hover {
+    transform: scale(1.02);
+}
+
+
+
 
 @media (max-width: 1200px) {
    

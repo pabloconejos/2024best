@@ -60,4 +60,9 @@ export class OneSearchComponent {
   isColab(song: Hit) {
     return song.result.full_title.includes('&') || song.result.full_title.includes('ft')
   }
+
+  closeAutocomplete() {
+    this.filteredResults = []
+    this.searchTerm = ''
+  }
 }
