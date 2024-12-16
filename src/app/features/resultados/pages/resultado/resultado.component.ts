@@ -5,6 +5,8 @@ import { ImageViewerComponent } from "../../../../shared/image-viewer/image-view
 import { HeaderComponent } from "../../../../shared/header/header.component";
 import { DomSanitizer } from '@angular/platform-browser';
 import { SharedLinkComponent } from "../../../../shared/shared-link/shared-link.component";
+import { LoaderComponent } from "../../../../shared/loader/loader.component";
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 export interface Idata {
   categoria: string;
@@ -14,7 +16,7 @@ export interface Idata {
 @Component({
   selector: 'app-resultado',
   standalone: true,
-  imports: [ImageViewerComponent, HeaderComponent, SharedLinkComponent],
+  imports: [ImageViewerComponent, HeaderComponent, SharedLinkComponent, LoaderComponent, TranslateModule],
   templateUrl: './resultado.component.html',
   styleUrl: './resultado.component.css'
 })
@@ -25,16 +27,33 @@ export class ResultadoComponent {
   selecciones: Idata[] = []
   name: string = ''
   currentUrl: string = '';
+  headerTitle: string = ''
 
   constructor(
     public route: ActivatedRoute,
     private geniusService: GeniusService,
     private sanitizer: DomSanitizer,
-    private router: Router
-  ) {}
+    private router: Router,
+    private translate: TranslateService
+  ) {
+     // Carga la traducción inicial
+     this.setTranslatedTitle();
+
+     // Suscríbete a los cambios de idioma (opcional, si la app permite cambiar idiomas dinámicamente)
+     this.translate.onLangChange.subscribe(() => {
+       this.setTranslatedTitle();
+     });
+  }
+
+  private setTranslatedTitle(): void {
+    this.translate.get('header_title_2').subscribe((translation: string) => {
+      this.headerTitle = translation + this.name;
+    });
+  }
 
   ngOnInit(): void {
-    this.currentUrl = this.router.url
+    
+    this.currentUrl = window.location.origin + this.router.url;
 
     this.route.queryParams.subscribe(params => {
       this.getInfo(params)

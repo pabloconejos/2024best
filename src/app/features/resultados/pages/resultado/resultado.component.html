@@ -1,10 +1,10 @@
-<app-header [title]="'Las favoritas de '+name"></app-header>
+<app-header [title]="headerTitle"></app-header>
 @if (selecciones.length >= 4) {
     <section class="resultado-section">
         @for (item of selecciones; track $index) {
             <div class="grid-item">
                 @if (item.categoria === 'cancion_del_ano' || item.categoria  === 'colaboracion_del_ano') {
-                    <p class="title">{{item.categoria == 'cancion_del_ano' ? 'CANCIÓN DEL AÑO' : 'COLABORACIÓN DEL AÑO'}}</p>
+                    <p class="title">{{item.categoria == 'cancion_del_ano' ? ('cancion_del_ano' | translate) : ('colaboracion_del_ano' | translate)}}</p>
                     <app-image-viewer 
                         [image]="{
                             url: item.data.header_image_url,
@@ -24,7 +24,7 @@
 
                 }
                 @if (item.categoria  === 'album_del_ano' || item.categoria  === 'portada_del_ano') {
-                    <p class="title">{{item.categoria == 'album_del_ano' ? 'ALBUM DEL AÑO' : 'PORTADA DEL AÑO'}}</p>
+                    <p class="title">{{item.categoria == 'album_del_ano' ? ('album_del_ano' | translate) : ('portada_del_ano' | translate)}}</p>
                     <app-image-viewer 
                         [image]="{
                             url: item.data[2],
@@ -41,10 +41,10 @@
             </div>
         }
     </section>
-    <app-shared-link [link]="'http://localhost:4200'+currentUrl"></app-shared-link>
+    <app-shared-link [link]="currentUrl"></app-shared-link>
 
 } @else {
     <div class="loader">
-        <h1>LOADING...</h1>
+        <app-loader></app-loader>
     </div>
 }

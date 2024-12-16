@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AccordionModule } from 'primeng/accordion';
 import { TopTresComponent } from "../../components/top-tres/top-tres.component";
 import { ColaboracionComponent } from "../../components/colaboracion/colaboracion.component";
@@ -13,6 +13,7 @@ import { SeleccionesService } from '../../../../core/services/selecciones.servic
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LoaderComponent } from "../../../../shared/loader/loader.component";
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-formulario',
@@ -29,12 +30,11 @@ import { LoaderComponent } from "../../../../shared/loader/loader.component";
     HeaderComponent,
     AlbumComponent,
     CommonModule,
-    LoaderComponent
 ],
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css', '../../components/one-search/one-search.component.css']
 })
-export class FormularioComponent {
+export class FormularioComponent implements OnInit{
 
   nombre: string = '';
   errorMessage: { isError: boolean; message: string; } = {
@@ -43,39 +43,35 @@ export class FormularioComponent {
   }
 
   categorias = [
-    {
-      id: 0,
-      categoria: 'CANCIÓN DEL AÑO',
-      nombre_back: 'cancion_del_ano',
-    },
-    {
-      id: 1,
-      categoria: 'COLABORACIÓN DEL AÑO',
-      nombre_back: 'colaboracion_del_ano',
-    },
-    {
-      id: 2,
-      categoria: 'ALBUM DEL AÑO',
-      nombre_back: 'album_del_ano',
-    },
-    {
-      id: 3,
-      categoria: 'PORTADA DEL AÑO',
-      nombre_back: 'portada_del_ano',
-    },
-    // {
-    //   id: 4,
-    //   categoria: 'BARRA DEL AÑO',
-    //   nombre_back: 'barra_del_ano',
-    // }
-  ]
+    { id: 0, categoria: 'CANCIÓN DEL AÑO', nombre_back: 'cancion_del_ano' },
+    { id: 1, categoria: 'COLABORACIÓN DEL AÑO', nombre_back: 'colaboracion_del_ano' },
+    { id: 2, categoria: 'ALBUM DEL AÑO', nombre_back: 'album_del_ano' },
+    { id: 3, categoria: 'PORTADA DEL AÑO', nombre_back: 'portada_del_ano' },
+  ];
 
   constructor(
     private seleccionesService: SeleccionesService,
-    private router: Router) {
-
+    private router: Router,
+    private translate: TranslateService) 
+  {
+    
+    this.translate.onLangChange.subscribe(() => {
+      this.translateCategorias();
+    });
   }
 
+  ngOnInit(): void {
+    this.translateCategorias();
+  }
+
+  private translateCategorias(): void {
+    console.log('hola')
+    this.categorias.forEach((categoria) => {
+      this.translate.get(categoria.nombre_back).subscribe((translation: string) => {
+        categoria.categoria = translation;
+      });
+    });
+  }
 
   generarResultado() {
     if (this.nombre.length <= 0) {

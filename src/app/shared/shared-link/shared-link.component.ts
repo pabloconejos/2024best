@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-shared-link',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './shared-link.component.html',
   styleUrl: './shared-link.component.css'
 })
