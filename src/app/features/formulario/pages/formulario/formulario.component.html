@@ -46,8 +46,8 @@
 
     <div class="name-section">
         <div class="result">
-            <input id="name" class="input-search" [(ngModel)]="nombre" type="text" placeholder="Tu nombre...">
-            <button (click)="generarResultado()">Resultado</button>
+            <input id="name" class="input-search" [(ngModel)]="nombre" type="text" [placeholder]="'tu_nombre' | translate">
+            <button (click)="generarResultado()">{{'resultado' | translate}}</button>
         </div>
     </div> 
 

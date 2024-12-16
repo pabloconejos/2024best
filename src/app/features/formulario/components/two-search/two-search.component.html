@@ -2,21 +2,21 @@
     <section>
         <form class="form-section" action="" [formGroup]="form" (ngSubmit)="search()">
             <section class="selector">
-                <input formControlName="artist" class="input-search" type="text" placeholder="Artista...">
+                <input formControlName="artist" class="input-search" type="text" [placeholder]="'placeholder_artist' | translate">
                 @if (form.get('artist')!.invalid && isSubmited) {
-                    <div class="alert">El nombre del artista es obligatorio.</div>
+                    <div class="alert">{{'campo_obligatorio' | translate}}</div>
                 }
                 
             </section>
         
             <section class="selector">
-                <input formControlName="song" class="input-search" type="text" placeholder="Cancion/Album...">
+                <input formControlName="song" class="input-search" type="text" [placeholder]="'placeholder_album_song' | translate">
                 @if (form.get('song')!.invalid && isSubmited) {
-                    <div class="alert">El nombre de la cancion es obligatorio.</div>
+                    <div class="alert">{{'campo_obligatorio' | translate}}</div>
                 }
             </section>
             @if (!isLoading) {
-                <button type="submit">Buscar</button>
+                <button type="submit">{{'buscar' | translate}}</button>
             } @else {
                 <button type="submit"><app-loader></app-loader></button>
             }

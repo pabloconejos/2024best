@@ -13,7 +13,7 @@ import { SeleccionesService } from '../../../../core/services/selecciones.servic
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LoaderComponent } from "../../../../shared/loader/loader.component";
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-formulario',
@@ -30,6 +30,7 @@ import { TranslateService } from '@ngx-translate/core';
     HeaderComponent,
     AlbumComponent,
     CommonModule,
+    TranslateModule
 ],
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css', '../../components/one-search/one-search.component.css']
@@ -39,7 +40,7 @@ export class FormularioComponent implements OnInit{
   nombre: string = '';
   errorMessage: { isError: boolean; message: string; } = {
     isError: false,
-    message: 'Faltan campos por completar'
+    message: ''
   }
 
   categorias = [
@@ -57,19 +58,26 @@ export class FormularioComponent implements OnInit{
     
     this.translate.onLangChange.subscribe(() => {
       this.translateCategorias();
+      this.translateMessageError();
     });
   }
 
   ngOnInit(): void {
     this.translateCategorias();
+    this.translateMessageError();
   }
 
   private translateCategorias(): void {
-    console.log('hola')
     this.categorias.forEach((categoria) => {
       this.translate.get(categoria.nombre_back).subscribe((translation: string) => {
         categoria.categoria = translation;
       });
+    });
+  }
+
+  private translateMessageError(): void {
+    this.translate.get('error_mesage').subscribe((translation: string) => {
+      this.errorMessage.message = translation
     });
   }
 

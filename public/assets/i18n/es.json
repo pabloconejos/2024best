@@ -9,5 +9,22 @@
     "info_link_text": "¡Pega el enlace donde quieras compartirlo!",
     "paste_btn": "Pegar",
     "footer_info_name": "Información",
-    "footer_home_name": "Inicio"
+    "footer_home_name": "Inicio",
+    "resultado": "Resultado",
+    "error_mesage": "Faltan campos por completar",
+    "campo_obligatorio": "Este campo es obligatorio",
+    "buscar": "Buscar",
+    "placeholder_artist": "Artista",
+    "placeholder_album_song": "Album/Canción",
+    "info_album_and_cover": "Si estás buscando la portada de un álbum, es más efectivo poner el nombre de una de las canciones que contiene en lugar del título del álbum.",
+    "info_song": "¿Cuál ha sido para ti la canción que más te ha gustado de este 2024?",
+    "info_colab": "¿Cuál ha sido la mejor colaboración del año para ti?",
+    "tu_nombre": "Tu nombre",
+    "informacion": {
+        "genius_api_title": "API de Genius",
+        "genius_api_description": "Es importante tener en cuenta que los resultados mostrados en esta aplicación no siempre pueden ser perfectos o visualmente atractivos, ya que dependo de la API de Genius para obtener la información. Dado que esta fuente externa proporciona los datos, los resultados pueden variar según su disponibilidad y formato. Agradecemos su comprensión y paciencia.",
+        "data_title": "Datos",
+        "data_description": "Esta aplicación no recopila ningún dato personal. Para mostrar información sobre tus canciones favoritas, se genera un enlace dinámico único para cada resultado."
+    }
+
 }

@@ -1,7 +1,7 @@
 @if (item) {
     <section class="selector">
         <div class="input-section">
-            <input (input)="search($event)" [(ngModel)]="searchTerm" class="input-search" type="text" placeholder="Buscar...">
+            <input (input)="search($event)" [(ngModel)]="searchTerm" class="input-search" type="text" [placeholder]="'buscar' | translate">
             <span class="close-btn">
                 <img (click)="closeAutocomplete()" src="assets/icons/close.svg" alt="">
             </span>

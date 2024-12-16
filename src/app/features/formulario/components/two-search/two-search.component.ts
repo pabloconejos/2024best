@@ -6,11 +6,12 @@ import { SeleccionesService } from '../../../../core/services/selecciones.servic
 import { Hit } from '../../../../interfaces/Igenius';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoaderComponent } from "../../../../shared/loader/loader.component";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-two-search',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, LoaderComponent],
+  imports: [FormsModule, ReactiveFormsModule, LoaderComponent, TranslateModule],
   templateUrl: './two-search.component.html',
   styleUrls: ['./two-search.component.css', '../one-search/one-search.component.css']
 })

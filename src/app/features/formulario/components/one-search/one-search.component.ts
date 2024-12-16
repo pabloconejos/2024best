@@ -5,11 +5,12 @@ import { SeleccionesService } from '../../../../core/services/selecciones.servic
 import { Hit } from '../../../../interfaces/Igenius';
 import { FormsModule } from '@angular/forms';
 import { ICategoria } from '../../../../interfaces/ICategoria';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-one-search',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, TranslateModule],
   templateUrl: './one-search.component.html',
   styleUrl: './one-search.component.css'
 })
