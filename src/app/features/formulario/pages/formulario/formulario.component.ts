@@ -82,7 +82,14 @@ export class FormularioComponent implements OnInit{
   }
 
   generarResultado() {
+    const numeroDePropiedades = Object.keys(this.seleccionesService.selecciones()).length;
     if (this.nombre.length <= 0) {
+      this.errorMessage.isError = true
+      this.closeAlert()
+      return
+    }
+
+    if (numeroDePropiedades < 4) {
       this.errorMessage.isError = true
       this.closeAlert()
       return

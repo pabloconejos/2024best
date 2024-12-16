@@ -1,0 +1,9 @@
+<div class="language-toggle">
+  <button (click)="toggleDropdown()" class="language-button">
+    {{ currentLanguage === 'en' ? 'English' : 'Español' }}
+  </button>
+  <div id="languageDropdown" class="dropdown-content">
+    <button (click)="changeLanguage('en')">English 🇬🇧</button>
+    <button (click)="changeLanguage('es')">Español 🇪🇸</button>
+  </div>
+</div>
