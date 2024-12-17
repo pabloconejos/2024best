@@ -116,7 +116,7 @@ export class FormularioComponent implements OnInit{
     const selecciones = this.seleccionesService.selecciones();
   
     const dataLink = [];
-    const baseLink = `http://localhost:4200/resultado?name=${this.nombre}&`;
+    const baseLink = `${window.location.origin}/resultado?name=${this.nombre}&`;
   
     for (const key in selecciones) {
       if (selecciones.hasOwnProperty(key)) {
