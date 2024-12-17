@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LoaderComponent } from "../../../../shared/loader/loader.component";
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LocalStorageService } from '../../../../core/services/local-storage.service';
 
 @Component({
   selector: 'app-formulario',
@@ -52,8 +53,8 @@ export class FormularioComponent implements OnInit{
 
   constructor(
     private seleccionesService: SeleccionesService,
-    private router: Router,
-    private translate: TranslateService) 
+    private translate: TranslateService,
+    private localStorageService: LocalStorageService) 
   {
     
     this.translate.onLangChange.subscribe(() => {
@@ -65,6 +66,9 @@ export class FormularioComponent implements OnInit{
   ngOnInit(): void {
     this.translateCategorias();
     this.translateMessageError();
+    if (this.localStorageService.getData()) {
+      this.seleccionesService.selecciones.set(this.localStorageService.getData()!)
+    }
   }
 
   private translateCategorias(): void {
@@ -111,24 +115,19 @@ export class FormularioComponent implements OnInit{
 
 
   generateLink() {
-    // Obtener las selecciones una vez y reutilizar
     const selecciones = this.seleccionesService.selecciones();
   
-    // Crear un array para almacenar las partes del enlace
     const dataLink = [];
     const baseLink = `http://localhost:4200/resultado?name=${this.nombre}&`;
   
-    // Iterar sobre las propiedades del objeto selecciones
     for (const key in selecciones) {
       if (selecciones.hasOwnProperty(key)) {
         const seleccion = selecciones[key];
         const categoria = seleccion.categoria;
   
-        // Si tiene un ID único
         if (seleccion.info.id) {
           dataLink.push(`${categoria}=${seleccion.info.id}`);
         } else {
-          // Si tiene múltiples datos, unirlos en un string separado por comas
           const ids = Object.values(seleccion.info).join(',');
           dataLink.push(`${categoria}=${ids}`);
         }
@@ -137,11 +136,8 @@ export class FormularioComponent implements OnInit{
 
     
   
-    // Unir todas las partes del enlace con '&'
     const realLink = baseLink + dataLink.join('&');
-    console.log(realLink);
-  
-    // Redirigir al enlace generado
+    this.localStorageService.deleteData()
     window.location.href = realLink;
   }
 
