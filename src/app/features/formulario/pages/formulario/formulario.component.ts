@@ -11,8 +11,6 @@ import { HeaderComponent } from "../../../../shared/header/header.component";
 import { AlbumComponent } from "../../components/album/album.component";
 import { SeleccionesService } from '../../../../core/services/selecciones.service';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import { LoaderComponent } from "../../../../shared/loader/loader.component";
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LocalStorageService } from '../../../../core/services/local-storage.service';
 

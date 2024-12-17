@@ -43,6 +43,7 @@ export class OneSearchComponent {
       this.filteredResults = this.filteredResults.sort((a,b) => b.result.release_date_components.year - a.result.release_date_components.year)
       this.error = false;
     }, error => {
+      console.log(error)
       // error
       this.error = true
     });

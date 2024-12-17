@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://localhost:1234'
+    apiUrl: 'https://api2024best.vercel.app'
 };
   
