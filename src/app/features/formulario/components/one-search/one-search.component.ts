@@ -24,6 +24,7 @@ export class OneSearchComponent {
   searchTerm = ''
   filteredResults: Hit[] = []
   categoriaSelected!: string;
+  error: boolean = false
 
   constructor(
     private geniusService: GeniusService,
@@ -40,7 +41,10 @@ export class OneSearchComponent {
 
       this.filteredResults = response.hits.filter(item => item.result.release_date_components)
       this.filteredResults = this.filteredResults.sort((a,b) => b.result.release_date_components.year - a.result.release_date_components.year)
-
+      this.error = false;
+    }, error => {
+      // error
+      this.error = true
     });
     
   }

@@ -6,6 +6,10 @@
                 <img (click)="closeAutocomplete()" src="assets/icons/close.svg" alt="">
             </span>
         </div>
+
+        @if (error) {
+            <p class="error">{{ 'error' | translate}}</p>
+        }
         
         @if (filteredResults.length > 0 && this.searchTerm.length >= 1) {
             <div class="autocomplete">

@@ -1,0 +1,30 @@
+{
+    "header_title": "FAVORITS 2024",
+    "header_title_2": "ELS FAVORITS DE ",
+    "cancion_del_ano": "CANÇÓ DE L'ANY",
+    "colaboracion_del_ano": "COL·LABORACIÓ DE L'ANY",
+    "portada_del_ano": "PORTADA DE L'ANY",
+    "album_del_ano": "ÀLBUM DE L'ANY",
+    "share_link_header": "Comparteix aquest enllaç",
+    "info_link_text": "Enganxa l'enllaç on vulgues compartir-lo!",
+    "paste_btn": "Enganxar",
+    "footer_info_name": "Informació",
+    "footer_home_name": "Inici",
+    "resultado": "Resultat",
+    "error_mesage": "Falten camps per completar",
+    "campo_obligatorio": "Aquest camp és obligatori",
+    "buscar": "Cercar",
+    "placeholder_artist": "Artista",
+    "placeholder_album_song": "Àlbum/Cançó",
+    "info_album_and_cover": "Si cerques la portada d'un àlbum, és més efectiu posar el nom d'una de les cançons que conté en lloc del títol de l'àlbum.",
+    "info_song": "Quina ha sigut per a tu la cançó que més t'ha agradat d'aquest 2024?",
+    "info_colab": "Quina ha sigut la millor col·laboració de l'any per a tu?",
+    "tu_nombre": "El teu nom",
+    "informacion": {
+        "genius_api_title": "API de Genius",
+        "genius_api_description": "És important tindre en compte que els resultats mostrats en aquesta aplicació no sempre poden ser perfectes o visualment atractius, ja que depenc de l'API de Genius per obtenir la informació. Atés que aquesta font externa proporciona les dades, els resultats poden variar segons la seua disponibilitat i format. Agraïm la vostra comprensió i paciència.",
+        "data_title": "Dades",
+        "data_description": "Aquesta aplicació no recopila cap dada personal. Per a mostrar informació sobre les teues cançons preferides, es genera un enllaç dinàmic únic per a cada resultat."
+    },
+    "error": "S'ha produït un error"
+}

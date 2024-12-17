@@ -25,5 +25,6 @@
         "genius_api_description": "It is important to note that the results displayed in this application may not always be perfect or visually appealing, as I depend on the Genius API to retrieve the information. Since this external source provides the data, results may vary based on its availability and format. We appreciate your understanding and patience.",
         "data_title": "Data",
         "data_description": "This application does not collect any personal data. To show information about your favorite songs, a unique dynamic link is generated for each result."
-    }
+    },
+    "error": "Ha ocurrido un error"
 }
