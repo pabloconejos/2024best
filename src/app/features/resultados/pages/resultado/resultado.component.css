@@ -61,3 +61,7 @@ p {
     font-size: 40px;
     text-decoration: underline;
 }
+
+a {
+    color: var(--color-primary)
+}

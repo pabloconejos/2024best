@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { GeniusService } from '../../../../core/services/genius.service';
 import { ImageViewerComponent } from "../../../../shared/image-viewer/image-viewer.component";
 import { HeaderComponent } from "../../../../shared/header/header.component";
@@ -16,7 +16,7 @@ export interface Idata {
 @Component({
   selector: 'app-resultado',
   standalone: true,
-  imports: [ImageViewerComponent, HeaderComponent, SharedLinkComponent, LoaderComponent, TranslateModule],
+  imports: [ImageViewerComponent, HeaderComponent, SharedLinkComponent, LoaderComponent, TranslateModule, RouterModule],
   templateUrl: './resultado.component.html',
   styleUrl: './resultado.component.css'
 })

@@ -26,5 +26,6 @@
         "data_title": "Data",
         "data_description": "This application does not collect any personal data. To show information about your favorite songs, a unique dynamic link is generated for each result."
     },
-    "error": "Ha ocurrido un error"
+    "error": "An error has been produced",
+    "haz_el_tuyo": "Make it yours"
 }

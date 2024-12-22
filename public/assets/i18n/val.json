@@ -26,5 +26,6 @@
         "data_title": "Dades",
         "data_description": "Aquesta aplicació no recopila cap dada personal. Per a mostrar informació sobre les teues cançons preferides, es genera un enllaç dinàmic únic per a cada resultat."
     },
-    "error": "S'ha produït un error"
+    "error": "S'ha produït un error",
+    "haz_el_tuyo": "Fes el teu"
 }

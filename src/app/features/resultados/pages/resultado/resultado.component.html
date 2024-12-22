@@ -41,6 +41,13 @@
             </div>
         }
     </section>
+    <hr class="mx-16">
+
+    <div class="flex justify-center w-100 m-4">
+        <button class="p-4 bg-white shadow-sm hover:bg-black transition-colors">
+            <a class="text-2xl" [routerLink]="['/']" routerLinkActive="router-link-active" >{{ 'haz_el_tuyo' | translate}}</a>
+        </button>
+    </div>
     <app-shared-link [link]="currentUrl"></app-shared-link>
 
 } @else {
