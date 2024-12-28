@@ -1,7 +1,7 @@
 @if (item) {
     <section class="selector">
         <div class="input-section">
-            <input (input)="search($event)" [(ngModel)]="searchTerm" class="input-search" type="text" [placeholder]="'buscar' | translate">
+            <input (input)="handlerSearch($event)" [(ngModel)]="searchTerm" class="input-search" type="text" [placeholder]="'buscar' | translate">
             <span class="close-btn">
                 <img (click)="closeAutocomplete()" src="assets/icons/close.svg" alt="">
             </span>
@@ -14,22 +14,32 @@
         @if (filteredResults.length > 0 && this.searchTerm.length >= 1) {
             <div class="autocomplete">
                 @for (song of filteredResults; track $index) {
-                    <div 
-                        (click)="song.result.release_date_components.year === 2024 && selectItem(item.nombre_back, song)" 
-                        [class.disabled]="song.result.release_date_components.year !== 2024 || !isColab(song) && item.nombre_back == 'colaboracion_del_ano'" 
-                        class="autocomplete-item">
-                        <img [src]="song.result.song_art_image_url" alt="{{ song.result.title }}" class="autocomplete-image">
-                        <span class="autocomplete-title">{{ song.result.full_title }}</span>
+                    @if (item.nombre_back == 'cancion_del_ano' || item.nombre_back == 'colaboracion_del_ano') {
+                        <div 
+                            (click)="song.result.release_date_components.year === 2024 && selectItem(item.nombre_back, song.result)"
+                            [class.disabled]="song.result.release_date_components.year !== 2024 || !isColab(song) && item.nombre_back == 'colaboracion_del_ano'" 
+                            class="autocomplete-item">
+                            <img [src]="song.result.song_art_image_url" alt="{{ song.result.title }}" class="autocomplete-image">
+                            <span class="autocomplete-title">{{ song.result.full_title }}</span>
+        
+                            @switch (item.nombre_back) {
+                                @case ('colaboracion_del_ano') {
+                                    <span class="autocomplete-more-info">{{ !isColab(song) ? 'no colab, ' : 'colab, ' }} </span>
+                                } 
+                            }
+                            <span class="autocomplete-more-info">{{ song.result.release_date_components.year }}</span>
+                        </div>
+                    }
     
-                        @switch (item.nombre_back) {
-                            @case ('colaboracion_del_ano') {
-                                <span class="autocomplete-more-info">{{ !isColab(song) ? 'no colab, ' : 'colab, ' }} </span>
-                            } 
-                        }
-                        <span class="autocomplete-more-info">{{ song.result.release_date_components.year }}</span>
-                        
-                        
-                    </div>
+                    @if (item.nombre_back == 'portada_del_ano' || item.nombre_back == 'barra_del_ano' || item.nombre_back == 'album_del_ano') {
+                        <div 
+                            (click)="selectItem(item.nombre_back, song)"
+                            class="autocomplete-item">
+                            <img [src]="song.url" alt="{{ song.title }}" class="autocomplete-image">
+                            <span class="autocomplete-title">{{ song.title }} by {{song.artist}}</span>
+                        </div>
+                    }
+                    
                 }
             </div>
         }
